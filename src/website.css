@@ -1,0 +1,13 @@
+.back-img{
+    background-image: url(./assets/images/hero_1.jpg);
+}
+
+.formcenter{
+    display: flex;
+    justify-content: center;
+}
+.textCenter{
+    display: flex;
+    justify-content: center;
+    color: black;
+}

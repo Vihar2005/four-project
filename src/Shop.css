@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.fourbox{
+    display: flex;
+    justify-content: space-between;
+    width: 30rem;
+    height: 30rem;
+}
+.fourbox img{
+    width: 50%;
+}
+.fourbox p{
+    /* width: 60%; */
+    font-size: small;
+    color: black;
+}
+.asd button{
+    border: none;
+    background-color: white;
+    outline: white;
+    cursor: pointer;
+}

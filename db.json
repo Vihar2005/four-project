@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first name": "test",
+      "last name": "test 2",
+      "email": "test 2@gmail.com",
+      "password": "123",
+      "Confirm password": "123"
+    },
+    {
+      "fname": "vihar",
+      "lname": "barvaliya",
+      "email": "viharbarvaliya12@gmail.com",
+      "password": "123",
+      "cpassword": "123",
+      "id": 2
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "email": "vb@gmail",
+      "password": "123"
+    },
+    {
+      "email": "vihar@gmail.com",
+      "password": "asdf",
+      "id": 2
+    },
+    {
+      "email": "viharbarvaliya12@gmail.com",
+      "password": "12345",
+      "id": 3
+    }
+  ]
+}
