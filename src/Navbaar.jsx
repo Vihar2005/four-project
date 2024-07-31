@@ -8,8 +8,7 @@ import './assets/css/aos.css'
 import './assets/css/style.css'
 import './assets/fonts/icomoon/style.css'
 import './website.css'
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { Link } from 'react-router-dom'
 
 const Navbaar = () => {
     return (
@@ -84,15 +83,5 @@ const Navbaar = () => {
         </div>
     )
 }
-import './assets/css/bootstrap.min.css'
-import './assets/css/magnific-popup.css'
-import './assets/css/jquery-ui.css'
-import './assets/css/owl.carousel.min.css'
-import './assets/css/owl.theme.default.min.css'
-import './assets/css/aos.css'
-import './assets/css/style.css'
-import './assets/fonts/icomoon/style.css'
-import './website.css'
-import { Link } from 'react-router-dom'
 
 export default Navbaar
