@@ -16,6 +16,7 @@ const Login = () => {
                 const user = userCredential.user;
                 navigate("/home")
                 console.log(user);
+                console.log('login succesfully');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -30,12 +31,12 @@ const Login = () => {
             <main >
                 <section>
                     <div>
-                        <p> FocusApp </p>
+                        <h1 className='h1'> Sign In </h1>
 
                         <form>
                             <div>
-                                <label htmlFor="email-address">
-                                    Email address
+                                <label htmlFor="email-address" className='space'>
+                                    Email
                                 </label>
                                 <input
                                     id="email-address"
@@ -48,7 +49,7 @@ const Login = () => {
                             </div>
 
                             <div>
-                                <label htmlFor="password">
+                                <label htmlFor="password" className='spacelabel'>
                                     Password
                                 </label>
                                 <input
@@ -64,13 +65,14 @@ const Login = () => {
                             <div>
                                 <button
                                     onClick={onLogin}
+                                    className='btncss btn btn-primary'
                                 >
                                     Login
                                 </button>
                             </div>
                         </form>
 
-                        <p className="text-sm text-white text-center">
+                        <p className="text-sm text-white text-center fontsize">
                             No account yet? {' '}
                             <NavLink to="/signup">
                                 Sign up

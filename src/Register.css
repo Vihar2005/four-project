@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.h1{
+    color: black;
+    padding: 0 0 20px 0;
+}
+.labelcss label{
+    font-size: 20px;
+    /* padding: 0 15px 0 0; */
+}
+.labelcss input{
+    font-size: 20px;
+    padding: 0 0 0 5px;
+}
+.space{
+    padding: 0 50px 0 0;
+}
+.spacelabel{
+    padding: 0 20px 0 0;
+}
+.btncss{
+    font-size: 20px;
+    width: 8rem;
+    /* color: rgb(128, 128, 220); */
+    background-color: rgb(150, 150, 239);
+}
+.fontsize{
+    font-size: 20px;
+}
+/* .bordersign{
+    border: 5px solid black;
+    width: 50%;
+} */

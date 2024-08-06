@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useContext } from 'react'
 import './assets/css/bootstrap.min.css'
 import './assets/css/magnific-popup.css'
 import './assets/css/jquery-ui.css'
@@ -15,13 +15,22 @@ import hero_2 from './assets/images/hero_1.jpg'
 import women from './assets/images/women.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
 import axios from 'axios';
+import { ContextCounter } from './App'
+
+
+
 
 const Shop = () => {
   const [data, setData] = useState([])
   const [selectedItems, setSelectedItems] = useState([]);
-  const [CatData,setCatData] = useState([])
+  const [CatData, setCatData] = useState([])
+  const { count, setCount } = useContext(ContextCounter);
+
+  const Counter = () => {
+    setCount(count + 1)
+  }
+
 
   useEffect(() => {
     const fetchData = () => {
@@ -94,6 +103,24 @@ const Shop = () => {
       })
       .catch((err) => console.log(err))
   }
+  const getPriceOrder = (e) => {
+    let order = e.target.value
+    let sortedData = [...data];
+    if (order == 1) {
+      sortedData.sort((a, b) => {
+        return a.price - b.price
+      })
+
+    } else if (order == 2) {
+      sortedData.sort((a, b) => {
+        return b.price - a.price
+      })
+
+    } else {
+      fetchData()
+    }
+    setData(sortedData)
+  }
 
 
 
@@ -109,10 +136,12 @@ const Shop = () => {
                 <div className="col-md-12 mb-5">
                   <div className="float-md-left mb-4"><h2 className="text-black h5 asd"><button onClick={ShowAll}>Shop All</button></h2></div>
                   <div className="d-flex">
-                    <div className="dropdown mr-1 ml-md-auto">
-                      <button type="button" className="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset">
-                        Latest
-                      </button>
+                    <div className=" mr-1 ml-md-auto">
+                      <select name="priceorder" onChange={getPriceOrder} className='btn btn-secondary btn-sm dropdown-toggle'>
+                        <option value="">price low-high</option>
+                        <option value="1">low</option>
+                        <option value="2">high</option>
+                      </select>
 
                     </div>
                     <div className="btn-group">
@@ -124,11 +153,12 @@ const Shop = () => {
 
 
               <div><input type="checkbox" onChange={handleSelectAll} checked={isAllSelected} />Select All</div>
+
               <div className="row mb-5 ">
                 {
                   data && data.map((i) => {
                     return (
-                      <div className="col-sm-6 col-lg-4 mb-4 fourbox">
+                      <div className="col-sm-8 col-lg-4 mb-4 fourbox">
                         <div className="block-4 text-center border">
                           <div>
                             <div key={data.id}>
@@ -136,18 +166,19 @@ const Shop = () => {
                             </div>
                           </div>
 
-                          <figure className="block-4-image">
-                            <a href="shop-single.html"><img src={i.image} alt="Image placeholder" className="img-fluid" /></a>
-                          </figure>
+                          <div className="block-4-image imgwidth">
+                            <a href="shop-single.html"><img src={i.image} alt="Image placeholder" className="img-fluid fixwidth" /></a>
+                          </div>
                           <div className="block-4-text p-4">
-                            <p className="mb-0">title : {i.title}</p>
+                            <p className="mb-0 settitle fixwidth">title : {i.title}</p>
                             <p className="text-primary font-weight-bold">price : {i.price}</p>
                             <p>category : {i.category}</p>
                           </div>
+                          <button onClick={Counter} className='btnstyle btn btn-primary'>Add to cart</button>
                         </div>
                       </div>
                     )
-                  })
+                })
                 }
               </div>
 

@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './FirebaseAuth';
 import './App.css'
+import './Register.css'
 
 const Register = () => {
     const navigate = useNavigate();
@@ -27,61 +28,42 @@ const Register = () => {
                 console.log(errorCode, errorMessage);
                 // ..
             });
-
-
     }
-
     return (
         <main >
-            <section>
+            <section className='bordersign'>
                 <div>
-                    <div>
-                        <h1> FocusApp </h1>
-                        <form>
-                            <div>
-                                <label htmlFor="email-address">
-                                    Email address
-                                </label>
-                                <input
-                                    type="email"
-                                    label="Email address"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    placeholder="Email address"
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="password">
-                                    Password
-                                </label>
-                                <input
-                                    type="password"
-                                    label="Create password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                    placeholder="Password"
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                onClick={onSubmit}
-                            >
-                                Sign up
-                            </button>
-
-                        </form>
-
-                        <p>
-                            Already have an account?{' '}
-                            <NavLink to="/login" >
-                                Sign in
-                            </NavLink>
-                        </p>
-                    </div>
+                    <h1 className='h1'> Sign Up </h1>
+                    <form className='labelcss'>
+                        <div>
+                            <label htmlFor="email-address" className='space'>
+                                Email 
+                            </label>
+                            <input
+                                type="email"
+                                label="Email address"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                placeholder="Email address"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="password" className='spacelabel'>Password</label>
+                            <input
+                                type="password"
+                                label="Create password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required placeholder="Password"
+                            />
+                        </div>
+                        <button type="submit" onClick={onSubmit} className='btncss btn btn-primary'> Sign up </button>
+                    </form>
+                    <p className='fontsize'>
+                        Already have an account?{' '}
+                        <NavLink to="/login" > Sign in </NavLink>
+                    </p>
                 </div>
             </section>
         </main>

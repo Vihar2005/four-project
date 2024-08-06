@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
 import './assets/css/bootstrap.min.css'
 import './assets/css/magnific-popup.css'
 import './assets/css/jquery-ui.css'
@@ -9,8 +10,14 @@ import './assets/css/style.css'
 import './assets/fonts/icomoon/style.css'
 import './website.css'
 import { Link } from 'react-router-dom'
+import { ContextCounter } from './App'
+import Cart from './Cart'
+
 
 const Navbaar = () => {
+    const { count, setCount } = useContext(ContextCounter);
+
+
     return (
         <div>
             <header className="site-navbar" role="banner">
@@ -26,9 +33,9 @@ const Navbaar = () => {
                             </div>
 
                             <div className="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-                                <div className="site-logo">
-                                    {/* <a href="index.htm" className="js-logo-clone">Shoppers</a> */}
-                                    <Link to="/Home" className="js-logo-clone">Shoppers</Link>
+                                <div className="sit2e-logo">
+                                    <a href="index.htm" className="js-logo-clone">Shoppers</a>
+                                    {/* <Link to="/Home" className="js-logo-clone">Shoppers</Link> */}
                                 </div>
                             </div>
 
@@ -39,8 +46,10 @@ const Navbaar = () => {
                                         <li><a href="#"><span className="icon icon-heart-o"></span></a></li>
                                         <li>
                                             <a href="#" className="site-cart">
-                                                <span className="icon icon-shopping_cart"></span>
-                                                <span className="count">2</span>
+                                                <Link to="/Cart">
+                                                    <span className="icon icon-shopping_cart"></span>
+                                                    <span className="count">{count}</span>
+                                                </Link>
                                             </a>
                                         </li>
                                         <li className="d-inline-block d-md-none ml-md-0"><a href="#" className="site-menu-toggle js-menu-toggle"><span className="icon-menu"></span></a></li>
@@ -71,7 +80,7 @@ const Navbaar = () => {
                             <li>
                                 <Link to="/signup">SignUp</Link>
                             </li>
-                            
+
                             <li>
                                 <Link to="/list">list</Link>
                             </li>
