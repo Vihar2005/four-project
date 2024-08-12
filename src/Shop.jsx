@@ -16,7 +16,7 @@ import women from './assets/images/women.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios';
-import { ContextCounter } from './App'
+import { AddToCart, ContextCounter } from './App'
 
 
 
@@ -26,11 +26,8 @@ const Shop = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [CatData, setCatData] = useState([])
   const { count, setCount } = useContext(ContextCounter);
-
-  const Counter = () => {
-    setCount(count + 1)
-  }
-
+  const { cart, setCart } = useContext(AddToCart);
+  const [addedItems, setAddedItems] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -40,6 +37,7 @@ const Shop = () => {
           setData(data);
         })
         .catch(error => console.error('Error fetching data:', error));
+
     }
     fetchData();
 
@@ -61,6 +59,7 @@ const Shop = () => {
   const handleSelectItem = (event, id) => {
     if (event.target.checked) {
       setSelectedItems([...selectedItems, id]);
+
     } else {
       setSelectedItems(selectedItems.filter(iId => iId !== id));
     }
@@ -122,6 +121,24 @@ const Shop = () => {
     setData(sortedData)
   }
 
+  const handleAddToCart = (item) => {
+    // const itemExists = cart.find(cartItem => cartItem.id === item.id);
+
+    // if (itemExists) {
+    //   alert("Item is already in the cart!");
+    // } else {
+    //   setCart([...cart, item]);
+    //   setCount(count + 1);
+    // }
+
+    if (!addedItems.includes(item.id)) {
+      setCart([...cart, item]);
+      setCount(count + 1);
+      setAddedItems([...addedItems, item.id]);
+    }
+  };
+
+
 
 
   return (
@@ -174,11 +191,11 @@ const Shop = () => {
                             <p className="text-primary font-weight-bold">price : {i.price}</p>
                             <p>category : {i.category}</p>
                           </div>
-                          <button onClick={Counter} className='btnstyle btn btn-primary'>Add to cart</button>
+                          <button onClick={() => handleAddToCart(i)} className='btnstyle btn btn-primary'>{addedItems.includes(i.id) ? 'Added' : 'Add to Cart'}</button>
                         </div>
                       </div>
                     )
-                })
+                  })
                 }
               </div>
 

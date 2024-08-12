@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import './assets/css/bootstrap.min.css'
 import './assets/css/magnific-popup.css'
@@ -9,14 +9,34 @@ import './assets/css/aos.css'
 import './assets/css/style.css'
 import './assets/fonts/icomoon/style.css'
 import './website.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ContextCounter } from './App'
-import Cart from './Cart'
+import { auth } from './FirebaseAuth';
+import { signOut } from 'firebase/auth';
 
 
 const Navbaar = () => {
     const { count, setCount } = useContext(ContextCounter);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setIsAuthenticated(!!user);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogout = () => {
+        signOut(auth)
+            .then(() => {
+                console.log("User signed out successfully");
+                navigate("/login");
+            })
+            .catch((error) => {
+                console.error("Error signing out: ", error);
+            });
+    };
 
     return (
         <div>
@@ -77,14 +97,18 @@ const Navbaar = () => {
                             <li>
                                 <Link to="/Contact">Contact</Link>
                             </li>
-                            <li>
-                                <Link to="/signup">SignUp</Link>
-                            </li>
 
                             <li>
                                 <Link to="/list">list</Link>
                             </li>
 
+                            <li>
+                                {isAuthenticated ? (
+                                    <button onClick={handleLogout} className="btn btn-link">Logout</button>
+                                ) : (
+                                    <Link to="/login">Login</Link>
+                                )}
+                            </li>
                         </ul>
                     </div>
                 </nav>
