@@ -9,9 +9,10 @@ import './assets/css/aos.css'
 import './assets/css/style.css'
 import hero_2 from './assets/images/hero_1.jpg'
 import { AddToCart, ContextCounter } from './App'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-     
+    const navigate = useNavigate();
     const { cart, setCart } = useContext(AddToCart);
     const { count, setCount } = useContext(ContextCounter);
     const [Quantity,setQuantity] = useState(1)
@@ -21,9 +22,19 @@ const Cart = () => {
     }
     const adddata = ()=>{
         setQuantity(Quantity+1);
+        updateTotal();
     }
     const removedata = () =>{
         setQuantity(Quantity-1);
+        updateTotal();
+    }
+
+    const updateTotal = () =>{
+        let total = 0;
+        cart.forEach(item =>{
+            total += item.price * item.Quantity;
+        });
+        console.log(total);
     }
 
 
@@ -65,14 +76,14 @@ const Cart = () => {
                                                                     <button className="btn btn-outline-primary js-btn-minus" type="button" onClick={removedata}>&minus;</button>
                                                                 </div>
                                                                 <input type="text" className="form-control text-center" placeholder="" value={Quantity} />
-                                                                {/* value="1" */}
+                                                                
                                                                 <div className="input-group-append">
                                                                     <button className="btn btn-outline-primary js-btn-plus" type="button" onClick={adddata}>+</button>
                                                                 </div>
                                                             </div>
 
                                                         </td>
-                                                        <td>${i.price}</td>
+                                                        <td>${i.price * Quantity}</td>
                                                         <td><input type="submit" value="X" className='btn btn-primary btn-sm' onClick={() => removetocart(i.id)}/></td>
                                                     </tr>
                                                 )
@@ -85,12 +96,12 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <Secondcomp />
+            <Secondcomp price={cart.price}/>
         </div>
     )
 }
 
-const Secondcomp = () => {
+const Secondcomp = (props) => {
     return (
         <div className="site-section">
             <div className="container">
@@ -130,7 +141,7 @@ const Secondcomp = () => {
                                         <span className="text-black">Subtotal</span>
                                     </div>
                                     <div className="col-md-6 text-right">
-                                        <strong className="text-black">$230.00</strong>
+                                        <strong className="text-black">{props.price}</strong>
                                     </div>
                                 </div>
                                 <div className="row mb-5">
