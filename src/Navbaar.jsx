@@ -51,10 +51,10 @@ const Navbaar = () => {
                                     <input type="text" className="form-control border-0" placeholder="Search" />
                                 </form>
                             </div>
-
+                            
                             <div className="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                                 <div className="sit2e-logo">
-                                    <a href="index.htm" className="js-logo-clone">Shoppers</a>
+                                    <Link to="/Home"><a href="#" className="js-logo-clone">Shoppers</a></Link>
                                     {/* <Link to="/Home" className="js-logo-clone">Shoppers</Link> */}
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ const Navbaar = () => {
                             <div className="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div className="site-top-icons">
                                     <ul>
-                                        <li><a href="#"><span className="icon icon-person"></span></a></li>
+                                        <li><a href="#"><Link to="/login"><span className="icon icon-person"></span></Link></a></li>
                                         <li><a href="#"><span className="icon icon-heart-o"></span></a></li>
                                         <li>
                                             <a href="#" className="site-cart">

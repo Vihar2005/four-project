@@ -139,16 +139,12 @@ const Shop = () => {
   };
 
 
-
-
   return (
     <div>
       <div className="site-section">
         <div className="container">
           <div className="row mb-5">
             <div className="col-md-9 order-2">
-
-
               <div className="row">
                 <div className="col-md-12 mb-5">
                   <div className="float-md-left mb-4"><h2 className="text-black h5 asd"><button onClick={ShowAll}>Shop All</button></h2></div>
@@ -159,7 +155,6 @@ const Shop = () => {
                         <option value="1">low</option>
                         <option value="2">high</option>
                       </select>
-
                     </div>
                     <div className="btn-group">
                       <button type="button" className="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference">Reference</button>
@@ -167,10 +162,7 @@ const Shop = () => {
                   </div>
                 </div>
               </div>
-
-
               <div><input type="checkbox" onChange={handleSelectAll} checked={isAllSelected} />Select All</div>
-
               <div className="row mb-5 ">
                 {
                   data && data.map((i) => {
