@@ -1,9 +1,6 @@
-// import React from 'react'
-// import './App.css'
 import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, query, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from './List/Firebase'
-// import Userlist from './List/StudentList'
 
 const List = (e) => {
   const [data, setData] = useState({
