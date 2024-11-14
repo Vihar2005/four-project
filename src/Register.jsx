@@ -37,7 +37,7 @@ const Register = () => {
                     <form className='labelcss'>
                         <div>
                             <label htmlFor="email-address" className='space'>
-                                Email 
+                                Email
                             </label>
                             <input
                                 type="email"
